@@ -1,0 +1,22 @@
+teleport:
+  nodename: teleport-docker
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+
+auth_service:
+  enabled: yes
+
+ssh_service:
+  enabled: yes
+  commands:
+    - name: hostname
+      command: [hostname]
+      period: 10s
+
+proxy_service:
+  enabled: yes
+  web_listen_addr: 0.0.0.0:3080
+  ssh_listen_addr: 0.0.0.0:3023
+  tunnel_listen_addr: 0.0.0.0:3024
