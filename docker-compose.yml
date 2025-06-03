@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   teleport:
-    image: ghcr.io/gravitational/teleport-distroless:14
+    image: public.ecr.aws/gravitational/teleport:14
     container_name: teleport
     restart: unless-stopped
     privileged: true
