@@ -14,7 +14,7 @@ services:
     volumes:
       - teleport-data:/var/lib/teleport
       - ./teleport.yaml:/etc/teleport.yaml
-    command: ["start", "--config=/etc/teleport.yaml"]
+    command: ["teleport", "start", "--config=/etc/teleport.yaml"]
 
 volumes:
   teleport-data:
