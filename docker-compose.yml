@@ -1,6 +1,6 @@
 services:
   teleport:
-    image: public.ecr.aws/gravitational/teleport:15
+    image: public.ecr.aws/gravitational/teleport:17
     container_name: teleport
     hostname: localhost
     restart: unless-stopped
