@@ -1,20 +1,16 @@
 services:
   teleport:
-    image: public.ecr.aws/gravitational/teleport:14
+    image: public.ecr.aws/gravitational/teleport:15
     container_name: teleport
+    hostname: localhost
     restart: unless-stopped
-    privileged: true
-    cap_add:
-      - SYS_PTRACE
     ports:
-      - "3022:3022"   # Teleport Node SSH
-      - "3023:3023"   # Teleport Proxy SSH
-      - "3024:3024"   # Reverse Tunnel
-      - "3080:3080"   # Web UI
+      - "3023:3023"
+      - "3025:3025"
+      - "3080:3080"
     volumes:
-      - teleport-data:/var/lib/teleport
-      - ./teleport.yaml:/etc/teleport.yaml
-    command: ["teleport", "start", "--config=/etc/teleport.yaml"]
+      - teleport_data:/var/lib/teleport
+      - ./teleport.yaml:/etc/teleport/teleport.yaml:ro
 
 volumes:
-  teleport-data:
+  teleport_data:

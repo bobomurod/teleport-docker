@@ -1,18 +1,24 @@
+version: v3
 teleport:
-  nodename: teleport-docker
+  nodename: localhost
   data_dir: /var/lib/teleport
   log:
     output: stderr
     severity: INFO
 
 auth_service:
-  enabled: yes
-
-ssh_service:
-  enabled: yes
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3025
+  cluster_name: "localhost"
+  tokens:
+    - "proxy,node:$(openssl rand -hex 32)"
 
 proxy_service:
-  enabled: yes
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3023
   web_listen_addr: 0.0.0.0:3080
-  ssh_listen_addr: 0.0.0.0:3023
-  tunnel_listen_addr: 0.0.0.0:3024
+  public_addr: localhost:3080
+
+ssh_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3022
