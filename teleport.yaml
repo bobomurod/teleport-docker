@@ -10,10 +10,6 @@ auth_service:
 
 ssh_service:
   enabled: yes
-  commands:
-    - name: hostname
-      command: [hostname]
-      period: 10s
 
 proxy_service:
   enabled: yes

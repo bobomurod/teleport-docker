@@ -9,14 +9,13 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - "3022:3022"   # SSH
-      - "3023:3023"   # Proxy SSH
-      - "3024:3024"   # Reverse tunnel
+      - "3022:3022"   # Teleport Node SSH
+      - "3023:3023"   # Teleport Proxy SSH
+      - "3024:3024"   # Reverse Tunnel
       - "3080:3080"   # Web UI
     volumes:
       - teleport-data:/var/lib/teleport
       - ./teleport.yaml:/etc/teleport.yaml
-
     command: ["start", "--config=/etc/teleport.yaml"]
 
 volumes:
